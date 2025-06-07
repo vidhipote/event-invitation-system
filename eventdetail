@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9; /* Light pastel background */
+        }
+        header {
+            background: #ffcccb; /* Pastel red */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        #event-details {
+            background: #ffffff; /* White background for details */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #77dd77; /* Pastel green */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 20px; /* Rounded button */
+            cursor: pointer;
+        }
+        button:hover {
+            background: #66bb66; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Event Details</h1>
+    </header>
+    <main>
+        <section id="event-details">
+            <h2>Event Title</h2>
+            <img src="../images/event-image.jpg" alt="Event Image">
+            <p>Description of the event goes here.</p>
+            <p>Location: <span id="event-location">Venue Name</span></p>
+            <p>Date & Time: <span id="event-date">Date and Time</span></p>
+            <p>Ticket Types and Prices: <span id="ticket-info">Details</span></p>
+            <button id="add-to-favorites">Add to Favorites</button>
+            <button id="book-ticket">Book Ticket</button>
+        </section>
+    </main>
+    <script src="../js/script.js"></script>
+</body>
+</html>
