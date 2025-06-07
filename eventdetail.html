@@ -52,6 +52,17 @@
             <button id="book-ticket">Book Ticket</button>
         </section>
     </main>
-    <script src="../js/script.js"></script>
+    <script>
+
+document.getElementById('add-to-favorites').addEventListener('click', function() {
+    const eventTitle = document.querySelector('h2').textContent; // Assuming the title is in an <h2>
+    alert(`${eventTitle} has been added to your favorites!`);
+});
+
+document.getElementById('book-ticket').addEventListener('click', function() {
+    const eventTitle = document.querySelector('h2').textContent; // Assuming the title is in an <h2>
+    alert(`You have booked a ticket for ${eventTitle}.`);
+});
+</script>
 </body>
 </html>
