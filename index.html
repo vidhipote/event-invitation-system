@@ -9,33 +9,61 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9; /* Light pastel background */
         }
         header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
+            background: #ffcccb; /* Pastel red */
+            color: #333;
+            padding: 20px;
             text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         form {
-            background: #fff;
+            background: #ffffff; /* White background for form */
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px; /* Limit form width */
+            margin: auto; /* Center the form */
         }
         input, textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 20px; /* Rounded input fields */
+            box-sizing: border-box;
         }
         button {
-            background: #5cb85c;
-            color: #fff;
+            background: #77dd77; /* Pastel green */
+            color: white;
             border: none;
             padding: 10px;
+            border-radius: 20px; /* Rounded button */
             cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #66bb66; /* Darker green on hover */
+        }
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffebcd; /* Pastel beige */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .popup button {
+            background: #ff7f50; /* Pastel coral */
+            border-radius: 20px;
         }
     </style>
 </head>
@@ -55,6 +83,29 @@
             </form>
         </section>
     </main>
+    <div class="popup" id="popup">
+        <p>Event created successfully!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
     <script src="script.js"></script>
+    <script>
+        document.getElementById('event-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = document.getElementById('event-title').value;
+            const date = document.getElementById('event-date').value;
+            const location = document.getElementById('event-location').value;
+            const description = document.getElementById('event-description').value;
+
+            // Here you would typically send this data to your API
+            console.log({ title, date, location, description });
+
+            // Show popup
+            document.getElementById('popup').style.display = 'block';
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
