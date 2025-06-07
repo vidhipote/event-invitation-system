@@ -47,6 +47,15 @@
             <!-- More booking items can be added here -->
         </section>
     </main>
-    <script src="../js/script.js"></script>
+    <script>
+
+document.querySelectorAll('.booking-item button').forEach(button => {
+    button.addEventListener('click', function() {
+        const bookingItem = this.parentElement; // Get the parent booking item
+        bookingItem.remove(); // Remove the booking item from the DOM
+        alert('Your booking has been canceled.');
+    });
+});
+</script>
 </body>
 </html>
