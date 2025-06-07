@@ -1,8 +1,9 @@
-// js/script.js for index.html
+// script.js
 
-document.getElementById('search-bar').addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    const events = document.querySelectorAll('#event-list .event-item'); // Assuming you have event items
+// Function to handle event search
+function searchEvents() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const events = document.querySelectorAll('.event-item'); // Assuming you have event items
     events.forEach(event => {
         const title = event.querySelector('.event-title').textContent.toLowerCase();
         if (title.includes(query)) {
@@ -11,28 +12,60 @@ document.getElementById('search-bar').addEventListener('input', function() {
             event.style.display = 'none';
         }
     });
-});
+}
 
-// Example function to populate events dynamically (you can replace this with actual data fetching)
-function loadEvents() {
-    const eventList = document.getElementById('event-list');
-    const events = [
-        { title: 'Concert', date: '2025-06-10', location: 'City Hall' },
-        { title: 'Art Exhibition', date: '2025-06-12', location: 'Art Gallery' },
-        // Add more events as needed
-    ];
+// Function to add event listeners for search functionality
+function setupSearch() {
+    const searchBar = document.getElementById('search-bar');
+    if (searchBar) {
+        searchBar.addEventListener('input', searchEvents);
+    }
+}
 
-    events.forEach(event => {
-        const eventItem = document.createElement('div');
-        eventItem.classList.add('event-item');
-        eventItem.innerHTML = `
-            <h3 class="event-title">${event.title}</h3>
-            <p>Date: ${event.date}</p>
-            <p>Location: ${event.location}</p>
-        `;
-        eventList.appendChild(eventItem);
+// Function to handle adding to favorites
+function addToFavorites(event) {
+    const eventTitle = event.target.closest('.event-item').querySelector('.event-title').textContent;
+    alert(`${eventTitle} has been added to your favorites!`);
+}
+
+// Function to handle booking tickets
+function bookTicket(event) {
+    const eventTitle = event.target.closest('.event-item').querySelector('.event-title').textContent;
+    alert(`You have booked a ticket for ${eventTitle}.`);
+}
+
+// Function to initialize event listeners on the event list
+function setupEventListeners() {
+    const favoriteButtons = document.querySelectorAll('.add-to-favorites');
+    favoriteButtons.forEach(button => {
+        button.addEventListener('click', addToFavorites);
+    });
+
+    const bookButtons = document.querySelectorAll('.book-ticket');
+    bookButtons.forEach(button => {
+        button.addEventListener('click', bookTicket);
     });
 }
 
-// Load events on page load
-window.onload = loadEvents;
+// Function to show a popup message
+function showPopup(message) {
+    const popup = document.getElementById('popup');
+    popup.querySelector('p').textContent = message;
+    popup.style.display = 'block';
+}
+
+// Function to close the popup
+function closePopup() {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'none';
+}
+
+// Initialize all functionalities
+function init() {
+    setupSearch();
+    setupEventListeners();
+}
+
+// Call init on page load
+document.addEventListener('DOMContentLoaded', init);
+
