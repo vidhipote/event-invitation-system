@@ -3,109 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Invitation System</title>
+    <title>Event Discovery Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9; /* Light pastel background */
+            padding: 0;
+            background-color: #f9f9f9;
         }
         header {
-            background: #ffcccb; /* Pastel red */
-            color: #333;
+            background-color: #ffcccb; /* Pastel red */
             padding: 20px;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        form {
-            background: #ffffff; /* White background for form */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        #event-discovery {
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px; /* Limit form width */
-            margin: auto; /* Center the form */
         }
-        input, textarea {
+        #search-bar {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 20px; /* Rounded input fields */
-            box-sizing: border-box;
-        }
-        button {
-            background: #77dd77; /* Pastel green */
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 20px; /* Rounded button */
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background: #66bb66; /* Darker green on hover */
-        }
-        /* Popup styles */
-        .popup {
-            display: none;
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: #ffebcd; /* Pastel beige */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-        .popup button {
-            background: #ff7f50; /* Pastel coral */
+            margin-bottom: 20px;
             border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+        #filters button {
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #77dd77; /* Pastel green */
+            color: white;
+            cursor: pointer;
+        }
+        #filters button:hover {
+            background-color: #66bb66; /* Darker green on hover */
+        }
+        #event-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Event Invitation System</h1>
+        <h1>Event Discovery Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pages/my-bookings.html">My Bookings</a></li>
+                <li><a href="pages/artist-profile.html">Artist Profile</a></li>
+                <li><a href="pages/manage-events.html">Manage Events</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <section id="event-creation">
-            <h2>Create an Event</h2>
-            <form id="event-form">
-                <input type="text" id="event-title" placeholder="Event Title" required>
-                <input type="datetime-local" id="event-date" required>
-                <input type="text" id="event-location" placeholder="Location" required>
-                <textarea id="event-description" placeholder="Description"></textarea>
-                <button type="submit">Create Event</button>
-            </form>
+        <section id="event-discovery">
+            <h2>Upcoming Events</h2>
+            <input type="text" id="search-bar" placeholder="Search for events, artists, or venues...">
+            <div id="filters">
+                <button>Today</button>
+                <button>Tomorrow</button>
+                <button>This Week</button>
+                <button>Custom Range</button>
+            </div>
+            <div id="event-list">
+                <!-- Event items will be dynamically populated here -->
+            </div>
         </section>
     </main>
-    <div class="popup" id="popup">
-        <p>Event created successfully!</p>
-        <button onclick="closePopup()">Close</button>
-    </div>
-    <script src="script.js"></script>
-    <script>
-        document.getElementById('event-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const title = document.getElementById('event-title').value;
-            const date = document.getElementById('event-date').value;
-            const location = document.getElementById('event-location').value;
-            const description = document.getElementById('event-description').value;
-
-            // Here you would typically send this data to your API
-            console.log({ title, date, location, description });
-
-            // Show popup
-            document.getElementById('popup').style.display = 'block';
-        });
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
+
